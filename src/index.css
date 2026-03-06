@@ -1,0 +1,65 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-black: #161919;
+  --color-text-black: #222222;
+  --color-text-dark: #333333;
+  --color-text-grey: #999999;
+  --color-text-muted: #b2b3b9;
+  --color-text-secondary: #969b9f;
+  --color-white: #ffffff;
+  --color-bg-page: #f6f6f6;
+  --color-bg-auth: #f9f9f9;
+  --color-bg-input: #f3f3f3;
+  --color-blue: #242edb;
+  --color-blue-light: #797fea;
+  --color-gray-2: #ececeb;
+  --color-gray-3: #b2b3b9;
+  --color-border: #ededed;
+  --color-red: #f11010;
+
+  --font-cairo: 'Cairo', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-open-sans: 'Open Sans', sans-serif;
+  --font-roboto: 'Roboto', sans-serif;
+  --font-roboto-mono: 'Roboto Mono', monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  --shadow-card: 0px 20px 50px 0px rgba(0, 0, 0, 0.12);
+  --shadow-auth: 0px 24px 32px 0px rgba(0, 0, 0, 0.04);
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-inter);
+  background-color: var(--color-bg-page);
+  color: var(--color-text-black);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+input {
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

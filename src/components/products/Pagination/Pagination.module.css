@@ -1,0 +1,64 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 0;
+  width: 100%;
+}
+
+.info {
+  font-family: var(--font-roboto);
+  font-size: 15px;
+  color: var(--color-text-secondary);
+}
+
+.infoNum {
+  color: var(--color-text-dark);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.numbers {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-cairo);
+  font-size: 14px;
+  border: 1px solid var(--color-gray-2);
+  color: var(--color-text-muted);
+  background: #fff;
+  box-shadow: var(--shadow-card);
+  transition: background 0.15s, color 0.15s;
+}
+
+.btn:hover:not(.active):not(:disabled) {
+  background: var(--color-bg-input);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.active {
+  background: var(--color-blue-light);
+  border-color: var(--color-blue-light);
+  color: #fff;
+  cursor: default;
+}
+
+.arrow {
+  color: var(--color-text-dark);
+}

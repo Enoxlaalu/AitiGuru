@@ -1,0 +1,130 @@
+.row {
+  display: flex;
+  align-items: center;
+  height: 71px;
+  padding: 0 18px;
+  border-bottom: 1px solid #e2e2e2;
+  transition: background 0.15s;
+}
+
+.row:hover {
+  background: #fafafa;
+}
+
+.product {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: 296px;
+  flex-shrink: 0;
+}
+
+.photo {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  border: 1px solid var(--color-gray-2);
+  object-fit: cover;
+  background: #c4c4c4;
+  flex-shrink: 0;
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.title {
+  font-family: var(--font-cairo);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--color-black);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 190px;
+}
+
+.category {
+  font-family: var(--font-cairo);
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.details {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 0;
+}
+
+.cell {
+  font-family: var(--font-open-sans);
+  font-size: 15px;
+  color: var(--color-text-black);
+  text-align: center;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 8px;
+}
+
+.cellBold {
+  font-weight: 700;
+}
+
+.ratingLow {
+  color: var(--color-red);
+}
+
+.price {
+  font-family: var(--font-roboto-mono);
+  font-size: 15px;
+  color: var(--color-text-black);
+  text-align: center;
+  flex: 1;
+}
+
+.priceCents {
+  color: var(--color-text-grey);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  width: 80px;
+  justify-content: flex-end;
+}
+
+.btnAdd {
+  background: var(--color-blue);
+  border-radius: 23px;
+  width: 52px;
+  height: 27px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.btnDots {
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox {
+  flex-shrink: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

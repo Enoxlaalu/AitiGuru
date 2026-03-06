@@ -1,0 +1,91 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 73px;
+  padding: 0 18px;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.headerProduct {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 296px;
+  flex-shrink: 0;
+}
+
+.headerCheck {
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--color-gray-3);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.headerLabel {
+  font-family: var(--font-cairo);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-text-muted);
+}
+
+.headerDetails {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.headerCell {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-cairo);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  user-select: none;
+  padding: 4px 0;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+
+.headerCell:hover {
+  background: var(--color-bg-input);
+}
+
+.headerCellStatic {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-cairo);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-text-muted);
+}
+
+.sortIcon {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.spacer {
+  width: 80px;
+  flex-shrink: 0;
+}
+
+.empty {
+  text-align: center;
+  padding: 48px;
+  color: var(--color-text-muted);
+  font-family: var(--font-inter);
+  font-size: 15px;
+}
