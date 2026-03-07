@@ -1,0 +1,46 @@
+.logoWrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 100px;
+  border: 1px solid rgba(237, 237, 237, 0.7);
+  box-shadow:
+    0 0 0 2px #fff,
+    0 12px 8px 0 rgba(0, 0, 0, 0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(0deg, rgba(35, 35, 35, 0) 50%, rgba(35, 35, 35, 0.06) 100%), #fff;
+  overflow: hidden;
+}
+
+.logoIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.texts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.heading {
+  font-family: var(--font-inter);
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 1.1;
+  letter-spacing: -0.6px;
+  color: #232323;
+  white-space: nowrap;
+}
+
+.subheading {
+  font-family: var(--font-inter);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #e0e0e0;
+}

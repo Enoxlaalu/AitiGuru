@@ -1,0 +1,159 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-family: var(--font-inter);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: -0.27px;
+  color: #232323;
+}
+
+.inputWrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 1.5px solid var(--color-border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  background: #fff;
+  transition: border-color 0.15s;
+}
+
+.inputWrap:focus-within {
+  border-color: var(--color-blue);
+}
+
+.inputWrap.hasError {
+  border-color: var(--color-red);
+}
+
+.inputField {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: var(--font-inter);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: -0.27px;
+  color: #232323;
+  background: transparent;
+  min-width: 0;
+}
+
+.inputField::placeholder {
+  color: #c0c0c0;
+}
+
+.iconBtn {
+  color: #9c9c9c;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+.fieldError {
+  font-size: 13px;
+  color: var(--color-red);
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.rememberLabel {
+  font-family: var(--font-inter);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #9c9c9c;
+  white-space: nowrap;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.submitBtn {
+  width: 100%;
+  height: 54px;
+  border-radius: 12px;
+  background:
+    linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.12) 100%),
+    var(--color-blue);
+  border: 1px solid #367aff;
+  box-shadow: 0 8px 8px 0 rgba(54, 122, 255, 0.03);
+  color: #fff;
+  font-family: var(--font-inter);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.2;
+  letter-spacing: -0.18px;
+  transition: opacity 0.15s;
+  position: relative;
+}
+
+.submitBtn:hover {
+  opacity: 0.9;
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dividerLine {
+  flex: 1;
+  height: 1px;
+  background: #ebebeb;
+}
+
+.dividerText {
+  font-family: var(--font-inter);
+  font-weight: 500;
+  font-size: 16px;
+  color: #ebebeb;
+}
+
+.apiError {
+  font-family: var(--font-inter);
+  font-size: 14px;
+  color: var(--color-red);
+  text-align: center;
+  background: #fff0f0;
+  border-radius: 8px;
+  padding: 10px 14px;
+}

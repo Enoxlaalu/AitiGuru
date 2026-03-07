@@ -1,0 +1,15 @@
+.footer {
+  font-family: var(--font-inter);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #6c6c6c;
+  text-align: center;
+}
+
+.footerLink {
+  font-weight: 600;
+  color: var(--color-blue);
+  text-decoration: underline;
+  cursor: pointer;
+}
