@@ -1,0 +1,24 @@
+.searchWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-bg-input);
+  border-radius: 8px;
+  padding: 12px 20px;
+  width: 600px;
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-inter);
+  font-size: 14px;
+  line-height: 24px;
+  color: #333;
+}
+
+.searchInput::placeholder {
+  color: var(--color-text-grey);
+}

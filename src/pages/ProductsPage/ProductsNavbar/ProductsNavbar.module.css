@@ -1,0 +1,18 @@
+.navbar {
+  background: #fff;
+  border-radius: 10px;
+  height: 105px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  flex-shrink: 0;
+}
+
+.navTitle {
+  font-family: var(--font-cairo);
+  font-weight: 700;
+  font-size: 24px;
+  color: #202020;
+  white-space: nowrap;
+}
