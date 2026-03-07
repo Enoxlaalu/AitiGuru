@@ -9,6 +9,7 @@ export function ProductsPage() {
 
   useEffect(() => {
     void load()
+    // load — стабильная ссылка из Zustand, не меняется между рендерами
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

@@ -9,7 +9,12 @@
 
 .footerLink {
   font-weight: 600;
+  font-size: inherit;
+  font-family: inherit;
   color: var(--color-blue);
   text-decoration: underline;
   cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
 }

@@ -51,10 +51,11 @@ export function LoginForm() {
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.fields}>
         <div className={styles.fieldGroup}>
-          <label className={styles.label}>Логин</label>
+          <label className={styles.label} htmlFor="username">Логин</label>
           <div className={`${styles.inputWrap} ${errors.username ? styles.hasError : ''}`}>
             <UserIcon size={24} color="#9c9c9c" />
             <input
+              id="username"
               className={styles.inputField}
               placeholder="Ваш логин"
               autoComplete="username"
@@ -67,10 +68,11 @@ export function LoginForm() {
         </div>
 
         <div className={styles.fieldGroup}>
-          <label className={styles.label}>Пароль</label>
+          <label className={styles.label} htmlFor="password">Пароль</label>
           <div className={`${styles.inputWrap} ${errors.password ? styles.hasError : ''}`}>
             <LockIcon size={24} color="#9c9c9c" />
             <input
+              id="password"
               className={styles.inputField}
               type={showPassword ? 'text' : 'password'}
               placeholder="••••••••••••"
