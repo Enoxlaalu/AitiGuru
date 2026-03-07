@@ -1,8 +1,5 @@
 .row {
-  display: flex;
-  align-items: center;
   height: 71px;
-  padding: 0 18px;
   border-bottom: 1px solid #e2e2e2;
   transition: background 0.15s;
 }
@@ -11,12 +8,20 @@
   background: #fafafa;
 }
 
-.product {
+.tdCheck {
+  padding: 0 8px 0 18px;
+  vertical-align: middle;
+}
+
+.tdProduct {
+  padding: 0 8px;
+  vertical-align: middle;
+}
+
+.productInner {
   display: flex;
   align-items: center;
   gap: 18px;
-  width: 296px;
-  flex-shrink: 0;
 }
 
 .photo {
@@ -44,7 +49,6 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 190px;
 }
 
 .category {
@@ -55,23 +59,14 @@
   white-space: nowrap;
 }
 
-.details {
-  display: flex;
-  align-items: center;
-  flex: 1;
-  gap: 0;
-}
-
 .cell {
   font-family: var(--font-open-sans);
   font-size: 15px;
   color: var(--color-text-black);
   text-align: center;
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   padding: 0 8px;
+  white-space: nowrap;
+  vertical-align: middle;
 }
 
 .cellBold {
@@ -87,19 +82,24 @@
   font-size: 15px;
   color: var(--color-text-black);
   text-align: center;
-  flex: 1;
+  padding: 0 8px;
+  white-space: nowrap;
+  vertical-align: middle;
 }
 
 .priceCents {
   color: var(--color-text-grey);
 }
 
+.tdActions {
+  padding: 0 18px 0 8px;
+  vertical-align: middle;
+}
+
 .actions {
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-shrink: 0;
-  width: 80px;
   justify-content: flex-end;
 }
 

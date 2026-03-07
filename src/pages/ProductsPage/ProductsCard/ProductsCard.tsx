@@ -29,7 +29,7 @@ export function ProductsCard() {
 
       <Pagination total={total} page={page} onPage={setPage} />
 
-      {showModal && <AddProductModal onClose={() => setShowModal(false)} onAdd={handleAdd} />}
+      {showModal && <AddProductModal setShowModal={() => setShowModal(false)} onAdd={handleAdd} />}
     </div>
   )
 }

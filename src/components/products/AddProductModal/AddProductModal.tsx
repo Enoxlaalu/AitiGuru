@@ -3,6 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import type { Product } from '@/types'
 import styles from './AddProductModal.module.css'
+import { useState } from 'react'
 
 const schema = z.object({
   title: z.string().min(1, 'Введите наименование'),
@@ -17,20 +18,24 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>
 
 interface Props {
-  onClose: () => void
+  setShowModal: () => void
   onAdd: (product: Product) => void
 }
 
-export function AddProductModal({ onClose, onAdd }: Props) {
+export function AddProductModal({ setShowModal, onAdd }: Props) {
+  const [closing, setClosing] = useState(false)
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) })
 
+  const onClose = () => setClosing(true)
+
   const onSubmit = (data: FormData) => {
     const product: Product = {
-      id: Date.now(),
+      id: crypto.randomUUID(),
       title: data.title,
       brand: data.brand,
       sku: data.sku,
@@ -47,8 +52,19 @@ export function AddProductModal({ onClose, onAdd }: Props) {
     if (e.target === e.currentTarget) onClose()
   }
 
+  const onAnimationEnd = () => {
+    if (closing) {
+      setShowModal()
+      setClosing(false)
+    }
+  }
+
   return (
-    <div className={styles.overlay} onClick={handleOverlayClick}>
+    <div
+      className={`${styles.overlay} ${closing ? styles.closing : styles.opened}`}
+      onClick={handleOverlayClick}
+      onAnimationEnd={onAnimationEnd}
+    >
       <div className={styles.modal}>
         <h2 className={styles.title}>Добавить товар</h2>
 
