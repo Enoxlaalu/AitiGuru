@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { login } from '@/api/auth';
-import { useAuthStore } from '@/store/authStore';
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
+import { login } from '@/api/auth'
+import { useAuthStore } from '@/store/authStore'
 import {
   UserIcon,
   LockIcon,
@@ -12,43 +12,41 @@ import {
   EyeOffIcon,
   CheckboxUncheckedIcon,
   CheckboxCheckedIcon,
-} from '@/components/icons';
-import styles from './LoginPage.module.css';
+  LogoIcon,
+} from '@/components/icons'
+import styles from './LoginPage.module.css'
 
 const schema = z.object({
   username: z.string().min(1, 'Введите логин'),
   password: z.string().min(1, 'Введите пароль'),
-});
+})
 
-type FormData = z.infer<typeof schema>;
+type FormData = z.infer<typeof schema>
 
 export function LoginPage() {
-  const navigate = useNavigate();
-  const authLogin = useAuthStore((s) => s.login);
-  const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
-  const [apiError, setApiError] = useState('');
-  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate()
+  const authLogin = useAuthStore((s) => s.login)
+  const [showPassword, setShowPassword] = useState(false)
+  const [rememberMe, setRememberMe] = useState(false)
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>({ resolver: zodResolver(schema) });
+    setError,
+    formState: { errors, isSubmitting },
+  } = useForm<FormData>({ resolver: zodResolver(schema) })
 
   const onSubmit = async (data: FormData) => {
-    setApiError('');
-    setLoading(true);
     try {
-      const res = await login(data.username, data.password);
-      authLogin(res.accessToken, rememberMe);
-      void navigate('/products');
+      const res = await login(data.username, data.password)
+      authLogin(res.accessToken, rememberMe)
+      navigate('/products')
     } catch (e) {
-      setApiError((e as Error).message);
-    } finally {
-      setLoading(false);
+      setError('root', {
+        message: e instanceof Error ? e.message : 'Произошла ошибка',
+      })
     }
-  };
+  }
 
   return (
     <div className={styles.page}>
@@ -56,10 +54,7 @@ export function LoginPage() {
         <div className={styles.inner}>
           <div className={styles.logoWrap}>
             <div className={styles.logoIcon}>
-              <svg width="35" height="34" viewBox="0 0 35 34" fill="none">
-                <path d="M17.5 3L32 28H3L17.5 3Z" fill="#242edb" opacity="0.9" />
-                <path d="M17.5 10L27 28H8L17.5 10Z" fill="#fff" opacity="0.7" />
-              </svg>
+              <LogoIcon />
             </div>
           </div>
 
@@ -126,9 +121,9 @@ export function LoginPage() {
             </button>
 
             <div className={styles.actions}>
-              {apiError && <div className={styles.apiError}>{apiError}</div>}
-              <button type="submit" className={styles.submitBtn} disabled={loading}>
-                {loading ? 'Входим...' : 'Войти'}
+              {errors.root && <div className={styles.apiError}>{errors.root.message}</div>}
+              <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
+                {isSubmitting ? 'Входим...' : 'Войти'}
               </button>
               <div className={styles.divider}>
                 <div className={styles.dividerLine} />
@@ -139,11 +134,10 @@ export function LoginPage() {
           </form>
 
           <p className={styles.footer}>
-            Нет аккаунта?{' '}
-            <span className={styles.footerLink}>Создать</span>
+            Нет аккаунта? <span className={styles.footerLink}>Создать</span>
           </p>
         </div>
       </div>
     </div>
-  );
+  )
 }

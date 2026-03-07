@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -36,7 +38,9 @@
   --shadow-auth: 0px 24px 32px 0px rgba(0, 0, 0, 0.04);
 }
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
 }
 

@@ -1,22 +1,22 @@
-import { useState } from 'react';
-import type { Product } from '@/types';
+import { useState } from 'react'
+import type { Product } from '@/types'
 import {
   CheckboxUncheckedIcon,
   CheckboxCheckedIcon,
   PlusCircleIcon,
   DotsIcon,
-} from '@/components/icons';
-import styles from './ProductRow.module.css';
+} from '@/components/icons'
+import styles from './ProductRow.module.css'
 
 interface Props {
-  product: Product;
+  product: Product
 }
 
 export function ProductRow({ product }: Props) {
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(false)
 
-  const priceWhole = Math.floor(product.price).toLocaleString('ru-RU');
-  const ratingLow = product.rating < 3;
+  const priceWhole = Math.floor(product.price).toLocaleString('ru-RU')
+  const ratingLow = product.rating < 3
 
   return (
     <div className={styles.row}>
@@ -28,11 +28,7 @@ export function ProductRow({ product }: Props) {
         >
           {checked ? <CheckboxCheckedIcon /> : <CheckboxUncheckedIcon />}
         </button>
-        <img
-          src={product.thumbnail}
-          alt={product.title}
-          className={styles.photo}
-        />
+        <img src={product.thumbnail} alt={product.title} className={styles.photo} />
         <div className={styles.name}>
           <span className={styles.title}>{product.title}</span>
           <span className={styles.category}>{product.category}</span>
@@ -60,5 +56,5 @@ export function ProductRow({ product }: Props) {
         </button>
       </div>
     </div>
-  );
+  )
 }

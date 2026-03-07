@@ -1,14 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
-import { useProductsStore } from '@/store/productsStore';
-import { ProductsTable } from '@/components/products/ProductsTable/ProductsTable';
-import { Pagination } from '@/components/products/Pagination/Pagination';
-import { AddProductModal } from '@/components/products/AddProductModal/AddProductModal';
-import { SearchIcon, RefreshIcon, PlusCircleIcon } from '@/components/icons';
-import { useToast } from '@/components/ui/Toast/Toast';
-import type { Product, SortField } from '@/types';
-import styles from './ProductsPage.module.css';
+import { useEffect, useRef, useState } from 'react'
+import { useProductsStore } from '@/store/productsStore'
+import { ProductsTable } from '@/components/products/ProductsTable/ProductsTable'
+import { Pagination } from '@/components/products/Pagination/Pagination'
+import { AddProductModal } from '@/components/products/AddProductModal/AddProductModal'
+import { SearchIcon, RefreshIcon, PlusCircleIcon } from '@/components/icons'
+import type { Product } from '@/types'
+import styles from './ProductsPage.module.css'
+import { useToast } from '@/context/toastContext'
 
-const DEBOUNCE_MS = 400;
+const DEBOUNCE_MS = 400
 
 export function ProductsPage() {
   const {
@@ -25,41 +25,33 @@ export function ProductsPage() {
     setPage,
     addProduct,
     resetLocal,
-  } = useProductsStore();
+  } = useProductsStore()
 
-  const toast = useToast();
-  const [showModal, setShowModal] = useState(false);
-  const [searchValue, setSearchValue] = useState(query);
-  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const toast = useToast()
+  const [showModal, setShowModal] = useState(false)
+  const [searchValue, setSearchValue] = useState(query)
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
-    void load();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    void load()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const val = e.target.value;
-    setSearchValue(val);
-    if (debounceRef.current) clearTimeout(debounceRef.current);
+    const val = e.target.value
+    setSearchValue(val)
+    if (debounceRef.current) clearTimeout(debounceRef.current)
     debounceRef.current = setTimeout(() => {
-      setQuery(val);
-    }, DEBOUNCE_MS);
-  };
-
-  const handleSort = (field: SortField) => {
-    setSort(field);
-  };
+      setQuery(val)
+    }, DEBOUNCE_MS)
+  }
 
   const handleAdd = (product: Product) => {
-    addProduct(product);
-    toast.show('Товар успешно добавлен', 'success');
-  };
+    addProduct(product)
+    toast.show('Товар успешно добавлен', 'success')
+  }
 
-  const handleRefresh = () => {
-    resetLocal();
-  };
-
-  const allProducts = [...localProducts, ...products];
+  const allProducts = [...localProducts, ...products]
 
   return (
     <div className={styles.page}>
@@ -80,39 +72,22 @@ export function ProductsPage() {
         <div className={styles.cardHeader}>
           <h2 className={styles.cardTitle}>Все позиции</h2>
           <div className={styles.actions}>
-            <button
-              className={styles.btnRefresh}
-              onClick={handleRefresh}
-              aria-label="Обновить"
-            >
+            <button className={styles.btnRefresh} onClick={resetLocal} aria-label="Обновить">
               <RefreshIcon size={20} color="#333" />
             </button>
-            <button
-              className={styles.btnAdd}
-              onClick={() => setShowModal(true)}
-            >
+            <button className={styles.btnAdd} onClick={() => setShowModal(true)}>
               <PlusCircleIcon size={18} color="#ebf3ea" />
               Добавить
             </button>
           </div>
         </div>
 
-        <ProductsTable
-          products={allProducts}
-          loading={loading}
-          sort={sort}
-          onSort={handleSort}
-        />
+        <ProductsTable products={allProducts} loading={loading} sort={sort} onSort={setSort} />
 
         <Pagination total={total} page={page} onPage={setPage} />
       </div>
 
-      {showModal && (
-        <AddProductModal
-          onClose={() => setShowModal(false)}
-          onAdd={handleAdd}
-        />
-      )}
+      {showModal && <AddProductModal onClose={() => setShowModal(false)} onAdd={handleAdd} />}
     </div>
-  );
+  )
 }

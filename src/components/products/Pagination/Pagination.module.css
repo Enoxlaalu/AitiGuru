@@ -40,7 +40,9 @@
   color: var(--color-text-muted);
   background: #fff;
   box-shadow: var(--shadow-card);
-  transition: background 0.15s, color 0.15s;
+  transition:
+    background 0.15s,
+    color 0.15s;
 }
 
 .btn:hover:not(.active):not(:disabled) {

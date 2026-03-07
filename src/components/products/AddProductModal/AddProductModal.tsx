@@ -1,24 +1,24 @@
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import type { Product } from '@/types';
-import styles from './AddProductModal.module.css';
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
+import type { Product } from '@/types'
+import styles from './AddProductModal.module.css'
 
 const schema = z.object({
   title: z.string().min(1, 'Введите наименование'),
   brand: z.string().min(1, 'Введите вендора'),
   sku: z.string().min(1, 'Введите артикул'),
-  price: z.string().min(1, 'Введите цену').refine(
-    (v) => !isNaN(parseFloat(v)) && parseFloat(v) > 0,
-    'Цена должна быть больше 0'
-  ),
-});
+  price: z
+    .string()
+    .min(1, 'Введите цену')
+    .refine((v) => !isNaN(parseFloat(v)) && parseFloat(v) > 0, 'Цена должна быть больше 0'),
+})
 
-type FormData = z.infer<typeof schema>;
+type FormData = z.infer<typeof schema>
 
 interface Props {
-  onClose: () => void;
-  onAdd: (product: Product) => void;
+  onClose: () => void
+  onAdd: (product: Product) => void
 }
 
 export function AddProductModal({ onClose, onAdd }: Props) {
@@ -26,7 +26,7 @@ export function AddProductModal({ onClose, onAdd }: Props) {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>({ resolver: zodResolver(schema) });
+  } = useForm<FormData>({ resolver: zodResolver(schema) })
 
   const onSubmit = (data: FormData) => {
     const product: Product = {
@@ -38,14 +38,14 @@ export function AddProductModal({ onClose, onAdd }: Props) {
       rating: 0,
       thumbnail: '',
       category: '',
-    };
-    onAdd(product);
-    onClose();
-  };
+    }
+    onAdd(product)
+    onClose()
+  }
 
   const handleOverlayClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) onClose();
-  };
+    if (e.target === e.currentTarget) onClose()
+  }
 
   return (
     <div className={styles.overlay} onClick={handleOverlayClick}>
@@ -105,5 +105,5 @@ export function AddProductModal({ onClose, onAdd }: Props) {
         </form>
       </div>
     </div>
-  );
+  )
 }

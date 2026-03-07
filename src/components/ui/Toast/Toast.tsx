@@ -1,46 +1,26 @@
-import { createContext, useCallback, useContext, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
-import styles from './Toast.module.css';
+import { useCallback, useState } from 'react'
+import { createPortal } from 'react-dom'
+import styles from './Toast.module.css'
+import type { ToastItem, ToastType } from '@/components/ui/Toast/Toast.types'
+import { ToastContext } from '@/context/toastContext'
 
-type ToastType = 'success' | 'error' | 'info';
-
-interface ToastItem {
-  id: number;
-  message: string;
-  type: ToastType;
-  leaving: boolean;
-}
-
-interface ToastContextValue {
-  show: (message: string, type?: ToastType) => void;
-}
-
-const ToastContext = createContext<ToastContextValue | null>(null);
-
-let counter = 0;
+let counter = 0
 
 export function ToastProvider({ children }: { children: React.ReactNode }) {
-  const [toasts, setToasts] = useState<ToastItem[]>([]);
-  const timers = useRef<Map<number, ReturnType<typeof setTimeout>>>(new Map());
+  const [toasts, setToasts] = useState<ToastItem[]>([])
 
-  const remove = useCallback((id: number) => {
-    setToasts((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, leaving: true } : t))
-    );
-    setTimeout(() => {
-      setToasts((prev) => prev.filter((t) => t.id !== id));
-    }, 320);
-  }, []);
+  const show = useCallback((message: string, type: ToastType = 'info') => {
+    const remove = (id: number) => {
+      setToasts((prev) => prev.map((t) => (t.id === id ? { ...t, leaving: true } : t)))
+      setTimeout(() => {
+        setToasts((prev) => prev.filter((t) => t.id !== id))
+      }, 320)
+    }
 
-  const show = useCallback(
-    (message: string, type: ToastType = 'info') => {
-      const id = ++counter;
-      setToasts((prev) => [...prev, { id, message, type, leaving: false }]);
-      const timer = setTimeout(() => remove(id), 3000);
-      timers.current.set(id, timer);
-    },
-    [remove]
-  );
+    const id = ++counter
+    setToasts((prev) => [...prev, { id, message, type, leaving: false }])
+    setTimeout(() => remove(id), 3000)
+  }, [])
 
   return (
     <ToastContext.Provider value={{ show }}>
@@ -56,14 +36,8 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
             </div>
           ))}
         </div>,
-        document.body
+        document.body,
       )}
     </ToastContext.Provider>
-  );
-}
-
-export function useToast(): ToastContextValue {
-  const ctx = useContext(ToastContext);
-  if (!ctx) throw new Error('useToast must be used inside ToastProvider');
-  return ctx;
+  )
 }
