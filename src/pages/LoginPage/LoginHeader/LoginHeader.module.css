@@ -44,3 +44,14 @@
   line-height: 1.5;
   color: #e0e0e0;
 }
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 28px;
+    white-space: normal;
+  }
+
+  .subheading {
+    font-size: 15px;
+  }
+}

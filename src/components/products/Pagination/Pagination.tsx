@@ -26,6 +26,11 @@ export function Pagination({ total, page, onPage }: Props) {
 
   for (let i = start; i <= end; i++) range.push(i)
 
+  const onClick = (page: number) => {
+    document.body.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' })
+    onPage(page)
+  }
+
   return (
     <div className={styles.pagination}>
       <span className={styles.info}>
@@ -40,7 +45,7 @@ export function Pagination({ total, page, onPage }: Props) {
         <button
           className={`${styles.btn} ${styles.arrow}`}
           disabled={page <= 1}
-          onClick={() => onPage(page - 1)}
+          onClick={() => onClick(page - 1)}
           aria-label="Назад"
         >
           <CaretLeftIcon size={16} />
@@ -51,7 +56,7 @@ export function Pagination({ total, page, onPage }: Props) {
             <button
               key={p}
               className={`${styles.btn} ${p === page ? styles.active : ''}`}
-              onClick={() => p !== page && onPage(p)}
+              onClick={() => p !== page && onClick(p)}
             >
               {p}
             </button>
@@ -61,7 +66,7 @@ export function Pagination({ total, page, onPage }: Props) {
         <button
           className={`${styles.btn} ${styles.arrow}`}
           disabled={page >= totalPages}
-          onClick={() => onPage(page + 1)}
+          onClick={() => onClick(page + 1)}
           aria-label="Вперёд"
         >
           <CaretRightIcon size={16} />

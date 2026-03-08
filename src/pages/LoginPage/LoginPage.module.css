@@ -27,3 +27,10 @@
   background: linear-gradient(180deg, rgba(35, 35, 35, 0.03) 0%, rgba(35, 35, 35, 0) 50%);
 }
 
+@media (max-width: 480px) {
+  .inner {
+    padding: 32px 24px;
+    gap: 24px;
+  }
+}
+
